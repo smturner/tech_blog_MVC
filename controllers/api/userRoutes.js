@@ -1,58 +1,22 @@
 const router = require('express').Router();
-const sequelize = require('../../config/connections');
-const db = require('../../models');
+// const User = require('../../models/user');
 
-// GET all drivers
-router.get('/', async (req, res) => {
-    res.render('homepage')
-//   try {
-//     const driverData = await Driver.findAll({
-//       include: [{ model: License }, { model: Car }],
-//       attributes: {
-//         include: [
-//           [
-//             // Use plain SQL to add up the total mileage
-//             sequelize.literal(
-//               '(SELECT SUM(mileage) FROM car WHERE car.driver_id = driver.id)'
-//             ),
-//             'totalMileage',
-//           ],
-//         ],
-//       },
-    });
-//     res.status(200).json(driverData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+router.get('/', async (req,res) => {
+    res.render ("homepage")
+});
 
-// // GET a single driver
-// router.get('/:id', async (req, res) => {
-//   try {
-//     const driverData = await Driver.findByPk(req.params.id, {
-//       include: [{ model: License }, { model: Car }],
-//       attributes: {
-//         include: [
-//           [
-//             // Use plain SQL to add up the total mileage
-//             sequelize.literal(
-//               '(SELECT SUM(mileage) FROM car WHERE car.driver_id = driver.id)'
-//             ),
-//             'totalMileage',
-//           ],
-//         ],
-//       },
-//     });
+router.post('/', async (req,res) => {
+    try {
+        const userData =await User.create(req.body);
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
+ 
+            res.status(200).json(userData)
+        });
+    }catch (err) {
+        res.status(400).json(err);
+    }
+ });
 
-//     if (!driverData) {
-//       res.status(404).json({ message: 'No driver found with that id!' });
-//       return;
-//     }
-
-//     res.status(200).json(driverData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-module.exports = router;
+module.exports= router
