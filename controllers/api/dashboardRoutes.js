@@ -14,7 +14,20 @@ router.post ('/', async (req, res) => {
     }
 });
 
-router.put("/")
+router.put("/:id", async(req,res) => {
+    try{
+        const dashboardData= await Post.update(
+            req.body, {
+                where: {
+                    id:req.params.id,
+                },
+            }
+        );
+        res.status(200).json(dashboardData) 
+    }catch(err) {
+        res.status(400).json(err);
+    }
+});
 
 
 
