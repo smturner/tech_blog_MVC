@@ -13,8 +13,7 @@
     --if you click on the post it opens up to add a comment
     --comment has name and date on bottom
 
---create a route for posting a new blog post
---create a route for updating and deleteing
+
 --create a route for comments
 --create a logout route
 --seed data for "already done blog posts"
