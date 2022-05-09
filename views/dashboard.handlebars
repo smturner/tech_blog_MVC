@@ -1,13 +1,41 @@
-<h1>this is the dashboard</h1>
+<div class="mb-5 pt-3">
+    <button type="submit" class="btn btn-dark btn-lg"> <a class="link" id="" href="/new-post">+ New Blog Post</a></button>
+    <h2>User Posts:</h>
+{{#if posts.length}}
+</div>
+
+
+{{#each post as |post|}}
+
 
 {{!-- {{if posts.length}}
 <section>
     <h2> Your Posts</h2>
     {{#each posts as |post|}}
-    {{>dashboard-postinfo post}}
+    {{>dashboard-postinfo}}
     {{/each}}
 </section>
 {{/if}} --}}
-<button type="submit" class="btn btn-dark btn-lg"> <a class="link" id="" href="/new-post">+ New Blog Post</a></button>
+
+  {{!-- {{#if posts.length}}
+  <div class="col-md-6 project-list">
+    <h3>Current Projects:</h3>
+
+    {{#each posts as |post|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/project/{{post.id}}">{{post.name}}</a></h4>
+      </div>
+      {{!-- <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+      </div> --}}
+    {{!-- </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div> --}}
+
+
+
 
 <script src="js/addPost.js"></script>

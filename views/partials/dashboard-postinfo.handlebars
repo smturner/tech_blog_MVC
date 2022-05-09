@@ -1,0 +1,19 @@
+<div class="card mb-6">
+      <header class="card-header card-header-title has-background-grey-lighter">
+       <div class="column">
+           <p class= "has-text-primary-light"></p>
+           <a href= "/dashboard/:{{id}}" class="has-text-black is capitalized is-pulled-left"> {{title}}</a>
+       </div>
+      </header>
+      <div class="card-content">
+          <div class="content has-text-justified">
+              {{post_content}}
+          </div>
+          <div class="is-pulled-right">
+             <p class="createdBy">Created by: {{user.name}} on {{format_date date_created}} </p> 
+          </div>
+      </div>
+      </div>
+
+
+      
