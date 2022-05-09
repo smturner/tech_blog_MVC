@@ -1,16 +1,16 @@
 <div class="mb-5 pt-3 newPost1">
     <button type="submit" class="newPostBtn btn btn-light btn-lg text-center"> <a class="link" id="" href="/new-post">+ New Blog Post</a></button>
-    <h2>User Posts:</h>
+  
 {{!-- {{#if posts.length}} --}}
 </div>
 
-{{#if posts.length}}
-{{{posts}}}
-
+{{!-- {{#if posts.length}} --}}
+  <h2>User Posts:</h2>
 {{#each posts as |post|}}
-{{{posts}}}
+
+{{> dashboard-postinfo}}
 {{!-- {{>dashboard-postinfo post}} --}}
-<div class="card mb-6">
+{{!-- <div class="card mb-6">
       <header class="card-header card-header-title has-background-grey-lighter">
        <div class="column">
            <p class= "has-text-primary-light"></p>
@@ -25,11 +25,11 @@
              <p class="createdBy">Created by: {{user.name}} on {{format_date date_created}} </p> 
           </div>
       </div>
-      </div>
+      </div> --}}
 {{/each}}
-{{else}}
-<h6 class="pb-4 has-text-centered is-italic">No Available Posts</h6>
-{{/if}}
+{{!-- {{else}}
+<h6 class="pb-4 has-text-centered is-italic">No Available Posts</h6> --}}
+{{!-- {{/if}} --}}
 {{!-- {{if posts.length}}
 <section>
     <h2> Your Posts</h2>

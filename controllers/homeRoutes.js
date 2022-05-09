@@ -25,13 +25,11 @@ router.get('/', async (req, res) => {
 
 });
 
-router.get('/dashboard', (req, res) => {
-    res.render('dashboard')
-});
-
 router.get('/new-post', (req, res) => {
   res.render('newPost')
 })
+
+
 
 router.get('/signup', (req, res) => {
     res.render('signup')

@@ -1,25 +1,5 @@
 
 {{#each posts as |post| }}
-<div class="row mb-6 post">
-  <header class="card-header">
-    <div class= "column">
-          <p class="title is-pulled-left">{{post.title}}</p>
-    </div>
-  </header>
-<div class="card-content">
-    <p class="content has-text-justified list-group-item" id="content">{{post.post_content}}</p>
-   
-    <p class="list-group-item date">Created by {{post.user.name}} on {{format_date date_created}}</p>
-</div>
-
-  </div>
-
-
-  
-  
-
-
-
-
+{{> dashboard-postinfo}}
 {{/each}}
 
