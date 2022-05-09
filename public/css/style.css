@@ -1,3 +1,102 @@
 * {
     box-sizing: border-box;
+  
   }
+
+  .navBar {
+      background-color: rgb(79, 104, 104);
+      color:white;
+      padding-bottom: 10px;
+
+  }
+  
+  .blogTitle {
+      margin-right: 20px;
+  }
+
+  .navbar-expand-lg {
+      font-size: 20px;
+      font-weight:600;
+
+  }
+
+body {
+      background-color:rgb(199, 224, 224);
+  }
+
+  .login,
+  .signup {
+      font-size: 55px;
+  }
+
+  .emailLogin,
+  .passwordLogin,
+  .nameSignup,
+  .emailSignup,
+  .passwordSignup {
+      font-size:25px;
+      margin-top: 5px;
+  }
+main {
+    display:grid;
+
+}
+  .btn-dark {
+      font-size:20px;
+  } 
+
+  .form-control{
+      font-size:20px;
+      border-radius:5px;
+  }
+
+  .signUpLink {
+      font-size: 20px;
+      margin-top: 15px;
+  }
+
+  .newPostBtn {
+      text-decoration: none;
+      color:white;
+      margin-bottom: 25px;
+      width:900px;
+      padding: 10px;
+      font-size: 23px;
+
+      /* margin:auto */
+  }
+
+  a {
+      text-decoration:none;
+  }
+
+  a:hover {
+      color:  rgb(79, 104, 104);
+  }
+
+  .title {
+      font-size: 40px;
+      background-color:rgb(52, 59, 59);
+      color:white;
+      border-bottom:white solid 1px;
+      /* padding: 15px; */
+      margin-bottom:0px;
+  }
+  
+  #content{
+      font-size:23px;
+  }
+.card-header {
+    background-color:rgb(52, 59, 59);
+
+
+}
+  .content{
+margin-bottom:0px;  
+margin-top: 0px;
+}
+
+.date{
+    font-size: 15px;
+    text-align: right;
+}

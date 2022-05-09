@@ -1,20 +1,25 @@
-<h1>List of posts</h1>
 
 {{#each posts as |post| }}
-<div class="row mb-4 post">
-  <div class="col-md-5 title">
-    <h2>{{post.title}}
-    </h2>
-    <p class="date">Created by {{post.user.name}} on {{format_date date_created}}</p>
-
+<div class="row mb-6 post">
+  <header class="card-header">
+    <div class= "column">
+          <p class="title is-pulled-left">{{post.title}}</p>
     </div>
-    <div class="row mb-4 post">
-    <p>
-      <span class="content">{{post.post_content}}</span>
-    </p>
-    
-  </div>
+  </header>
+<div class="card-content">
+    <p class="content has-text-justified list-group-item" id="content">{{post.post_content}}</p>
+   
+    <p class="list-group-item date">Created by {{post.user.name}} on {{format_date date_created}}</p>
+</div>
 
   </div>
-</div>
+
+
+  
+  
+
+
+
+
 {{/each}}
+
