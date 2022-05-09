@@ -3,27 +3,24 @@ const newPostForm = async(e) =>{
 
     e.preventDefault();
     // console.log("hello")
-    const titleForm = document.querySelector('#titleForm').value.trim();
-    const contentForm = document.querySelector('#contentForm').value.trim();
+    const titleForm = document.querySelector('#titleForm').value;
+    const contentForm = document.querySelector('#contentForm').value;
+
+
 
     if (titleForm && contentForm) {
-        const response = await fetch('/api/dashboard', {
+        const response = await fetch ('/api/dashboard/', {
             method: 'POST',
-            body: JSON.stringify({
-                titleForm,
-                contentForm
-            }),
+            body:JSON.stringify({titleForm,contentForm}),
+            headers: { 'Content-Type': 'application/json'},
         });
         if (response.ok) {
             document.location.replace ('/homepage')
         }else {
-            alert('Failed to create post')
+            alert(response.statusText)
         }
     }
-
-
-   
-}
+};
 
 document
 .querySelector(".createPostForm")
