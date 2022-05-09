@@ -1,0 +1,13 @@
+<div class="mb-5 pt-3 newPost1">
+    {{!-- <button type="submit" class="newPostBtn btn btn-light btn-lg text-center"> <a class="link" id="" href="/api/newpost">+ New Blog Post</a></button> --}}
+  
+</div>
+{{#if posts.length}}
+  <h2>User Posts:</h2>
+{{#each posts as |post|}}
+{{!-- {{#if }} --}}
+{{> dashboard-postinfo}}
+
+{{/each}}
+
+{{/if}}

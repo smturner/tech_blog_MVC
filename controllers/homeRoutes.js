@@ -25,9 +25,7 @@ router.get('/', async (req, res) => {
 
 });
 
-router.get('/new-post', (req, res) => {
-  res.render('newPost')
-})
+
 
 
 

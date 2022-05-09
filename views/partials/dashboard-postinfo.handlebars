@@ -1,5 +1,5 @@
 <div class="row-md mb-6 post">
-  <header class="card-header">
+  <header class="card-header" data-postId={{id}}>    
     <div class= "column">
           <p class="title is-pulled-left">{{title}}</p>
     </div>
@@ -10,6 +10,8 @@
     <p class="list-group-item date">Created by {{user.name}} on {{format_date date_created}}</p>
 </div>
 
+<button onclick="editUserPost()"> Edit</button>
+
   </div>
 
-      
+      <script src="/js/editUserPost"> </script>

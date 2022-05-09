@@ -1,8 +1,13 @@
 const router = require('express').Router();
 const { Post, User, Comments } = require('../../models');
-const withAuth = require('../../utils/auth')
+// const withAuth = require('../../utils/auth')
 
-router.get("/", withAuth, async(req,res)=> {
+
+router.get('/', (req, res) => {
+    res.render('newPost')
+  })
+  
+router.get("/", async(req,res)=> {
    try{ const newPost = await Post.findAll({
         include: [
             {
@@ -24,7 +29,7 @@ console.log(posts)
 }
 })
 //new blog post route
-router.post('/', withAuth, async (req, res) => {
+router.post('/',  async (req, res) => {
     try {
         const newPost = await Post.create({
             ...req.body,
@@ -36,7 +41,10 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-router.put("/:id", withAuth, async (req, res) => {
+
+
+
+router.put("/:id",  async (req, res) => {
     try {
         const dashboardData = await Post.update(
             req.body, {
@@ -56,7 +64,7 @@ router.put("/:id", withAuth, async (req, res) => {
 });
 
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id',  async (req, res) => {
     try {
         const dashboardData = await Post.destroy(
             {

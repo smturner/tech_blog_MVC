@@ -8,11 +8,18 @@ router.get('/', withAuth, async (req, res) => {
         const newPost = await Post.findAll({
             where: {
                 user_id: req.session.user_id
-            }
+            },
+            include: [
+                {
+                  model: User,
+                  attributes:['name'],
+                },
+              ],
         });
         const posts = newPost.map((post) => post.get({ plain: true }));
         res.render('dashboard', {
             posts,
+            user_id: req.session.user_id,
             logged_in: true
         })
     } catch (err) {
@@ -20,6 +27,22 @@ router.get('/', withAuth, async (req, res) => {
     }
 
 });
+
+router.get('/edit/:id', async (req, res) => {
+    try{
+        const editPost = await Post.findByPk (
+            req.params.id
+        )
+        res.render("editPost", post)
+        if (!editPost) {
+            res.status (404).json({message: "No post found with this id!"});
+            return
+        }
+        res.status(200).json(editPost)
+    }catch (err) {
+        res.status(400).json()
+    }
+})
 // get edited post to replace posts
 // router.get('/edit/id', withAuth, (req,res) => {
 //     try {

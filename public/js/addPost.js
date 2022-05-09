@@ -9,13 +9,13 @@ const newPostForm = async(e) =>{
 
 
     if (title && post_content) {
-        const response = await fetch ('/api/newPost/', {
+        const response = await fetch ('/api/newpost/', {
             method: 'POST',
             body:JSON.stringify({title, post_content}),
             headers: { 'Content-Type': 'application/json'},
         });
         if (response.ok) {
-            document.location.replace ('/api/newpost')
+            document.location.replace ('/dashboard')
         }else {
             alert(response.statusText)
         }
