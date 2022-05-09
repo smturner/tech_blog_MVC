@@ -1,31 +1,36 @@
 const router = require('express').Router();
 const { Post, User, Comments } = require('../models');
-// const withAuth = require('../../utils/auth')
+const withAuth = require('../utils/auth')
 
 
-// router.get('/', (req, res) => {
-//     res.render('dashboard')
-// });
-
-
-
-router.get('/', async(req,res) => {
-    try{
+router.get('/', withAuth, async (req, res) => {
+    try {
         const newPost = await Post.findAll({
             where: {
                 user_id: req.session.user_id
             }
         });
-        const posts = newPost.map((post) => post.get({ plain:true}));
-    res.render('dashboard', {
-        posts,
-        logged_in:true
-    })
+        const posts = newPost.map((post) => post.get({ plain: true }));
+        res.render('dashboard', {
+            posts,
+            logged_in: true
+        })
     } catch (err) {
         res.status(500).json(err);
     }
-   
-})
+
+});
+// get edited post to replace posts
+// router.get('/edit/id', withAuth, (req,res) => {
+//     try {
+//         const editPost = await Post.findOne({
+//             where: {
+
+//             }
+//         })
+
+//     }
+// })
 
 // router.get('/', async(req,res)=> {
 //     try{
@@ -58,19 +63,6 @@ router.get('/', async(req,res) => {
 //         res.sataus(500).json(err);
 //     }
 // })
-
-//new blog post route
-router.post('/', async (req, res) => {
-    try {
-        const newPost = await Post.create({
-            ...req.body,
-            user_id: req.session.user_id,
-        });
-        res.status(200).json(newPost)
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
 
 
 

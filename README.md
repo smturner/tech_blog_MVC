@@ -24,7 +24,8 @@ handlebars/css/javascript
 --create form for comment w/ button
 
 
-
+When logged in:
+--get route for all
 
 
 to do

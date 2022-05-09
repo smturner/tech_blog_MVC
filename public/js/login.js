@@ -14,7 +14,7 @@ const loginForm = async (e) => {
             headers: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {
-            document.location.replace ('/dashboard')
+            document.location.replace ('/api/newpost')
         }else {
             alert(response.statusText);
         }
