@@ -3,19 +3,19 @@ const newPostForm = async(e) =>{
 
     e.preventDefault();
     // console.log("hello")
-    const titleForm = document.querySelector('#titleForm').value;
-    const contentForm = document.querySelector('#contentForm').value;
+    const title = document.querySelector('#titleForm').value;
+    const post_content = document.querySelector('#contentForm').value;
 
 
 
-    if (titleForm && contentForm) {
+    if (title && post_content) {
         const response = await fetch ('/api/dashboard/', {
             method: 'POST',
-            body:JSON.stringify({titleForm,contentForm}),
+            body:JSON.stringify({title, post_content}),
             headers: { 'Content-Type': 'application/json'},
         });
         if (response.ok) {
-            document.location.replace ('/homepage')
+            document.location.replace ('/')
         }else {
             alert(response.statusText)
         }
