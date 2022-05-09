@@ -1,19 +1,21 @@
 <div class="mb-5 pt-3 newPost1">
     <button type="submit" class="newPostBtn btn btn-light btn-lg text-center"> <a class="link" id="" href="/api/newpost">+ New Blog Post</a></button>
-  
-{{!-- {{#if posts.length}} --}}
-</div>
+    <h2>User Posts:</h2>
+
 {{#if posts.length}}
-  <h2>User Posts:</h2>
+</div>
+{{!-- {{#if posts.length}} --}}
 {{#each posts as |post|}}
 {{!-- {{#if }} --}}
 {{> dashboard-postinfo}}
-
+<a href= "/dashboard/edit/{{post.id}}"> <button  class="btn btn-custom mb-5 ml-5 editBtn">Edit Post</button></a>
 {{/each}}
+
+{{else}}
+<h5>No Available Posts</h5>
 
 {{/if}}
 
 
 
 
-<script src="js/addPost.js"></script>

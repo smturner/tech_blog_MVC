@@ -28,70 +28,27 @@ router.get('/', withAuth, async (req, res) => {
 
 });
 
-router.get('/edit/:id', async (req, res) => {
+router.get('/edit/:id', withAuth, async (req, res) => {
     try{
         const editPost = await Post.findByPk (
             req.params.id
         )
-        res.render("editPost", post)
+        const posts = editPost.map((post) => post.get({ plain: true }));
+
+        res.render("editPost", {
+            posts,
+            user_id: req.session.user_id,
+            logged_in:true,
+        })
         if (!editPost) {
             res.status (404).json({message: "No post found with this id!"});
             return
         }
         res.status(200).json(editPost)
     }catch (err) {
-        res.status(400).json()
+        res.status(400).json(err)
     }
 })
-// get edited post to replace posts
-// router.get('/edit/id', withAuth, (req,res) => {
-//     try {
-//         const editPost = await Post.findOne({
-//             where: {
-
-//             }
-//         })
-
-//     }
-// })
-
-// router.get('/', async(req,res)=> {
-//     try{
-//         const newPost = await Post.findAll({
-//             where: {
-//                 user_id: req.session.user_id,
-//             },
-//             // attributes: ["id", "title", "post_content", "date_created"],
-//             include: [{
-//                 model: Comment,
-//                 attributes: ["id", "comment_content", "date_created", "post_id", "user_id",],
-//                 include: {
-//                     model: User,
-//                     attributes: ["name"],
-//                 },
-//             },
-//         {
-//             model: User,
-//             attributes: ["name"],
-//         },
-//     ],
-//         });
-//         const posts = newPost.map((post) => post.get({plain:true}))
-//         res.render ('/dashbaord', {
-//             posts,
-//             logged_in: true
-
-//         });
-//     }catch (err) {
-//         res.sataus(500).json(err);
-//     }
-// })
-
-
-
-
-
-
 
 
 module.exports = router
