@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Post, User, Comments } = require('../../models');
-const withAuth = require('../../utils/auth')
+// const withAuth = require('../../utils/auth')
 
 
 // router.get('/', async (req, res) => {
@@ -55,7 +55,7 @@ const withAuth = require('../../utils/auth')
 //     }
 // })
 //new blog post route
-router.post ('/', withAuth,  async (req, res) => {
+router.post ('/',   async (req, res) => {
     try{
         const dashboardData = await Post.create({
             ...req.body,
@@ -67,7 +67,7 @@ router.post ('/', withAuth,  async (req, res) => {
     }
 });
 
-router.put("/:id", withAuth, async(req,res) => {
+router.put("/:id",  async(req,res) => {
     try{
         const dashboardData= await Post.update(
             req.body, {

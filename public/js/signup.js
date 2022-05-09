@@ -11,13 +11,13 @@ const signUpForm = async (e) => {
 
 
     if (name && email && password) {
-        const response = await fetch ('/api/user/signup', {
+        const response = await fetch ('/api/user/', {
             method: 'POST',
             body:JSON.stringify({name, email, password}),
             headers: { 'Content-Type': 'application/json'},
         });
         if (response.ok) {
-            // document.location.replace ('/login')
+            document.location.replace ('/dashboard')
         }else {
             alert(response.statusText)
         }

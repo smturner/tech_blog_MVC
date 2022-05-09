@@ -25,17 +25,8 @@ router.get('/', async (req, res) => {
 
 });
 
-router.get('/dashboard', async (req, res) => {
-  try {
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Post}],
-    });
-    const user = userData.get({plain:true});
-    res.render('dashboard ', user)
-  }catch (err) {
-    res.status(500).json(err)
-  }
+router.get('/dashboard', (req, res) => {
+    res.render('dashboard')
 });
 
 router.get('/new-post', (req, res) => {
