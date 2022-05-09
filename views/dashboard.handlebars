@@ -1,4 +1,32 @@
 <h1>this is the dashboard</h1>
+{{#each dashbaord as |dashboard|}}
+      <div class="card mb-3 past-list" style="max-width: 300px; display:flex; margin: 5px; ">
+        <div class="row mb-2 justify-content-center">
+          <div class="col-md-8">
+            <div class="card-body">
+
+              <div class="text-center">
+                <h4 class="date">{{format_date date_created}}</h4>
+                <h5 class="length"> {{dashboard.title}}</h5>
+
+                <h5 class="rating">:  {{dashboard.content}}</h5>
+
+                <button class="btn btn-sm btn-dark delete" data-id="{{dashboard.id}}
+              ">DELETE</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {{/each}}
+{{!-- </div> --}}
+  {{/if}}
+</div>
+</div>
+</div>
 {{!-- {{if posts.length}}
 <section>
     <h2> Your Posts</h2>
@@ -7,6 +35,6 @@
     {{/each}}
 </section>
 {{/if}} --}}
-<button type="submit" class="btn btn-dark btn-lg"> <a class="link" href="#">+ New Blog Post</a></button>
+<button type="submit" class="btn btn-dark btn-lg"> <a class="link" id="" href="/new-post">+ New Blog Post</a></button>
 
 <script src="js/addPost.js"></script>

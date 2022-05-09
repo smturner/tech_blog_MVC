@@ -1,22 +1,46 @@
 const router = require('express').Router();
 const { User, Post } = require('../models');
-// const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
-    // res.render('homepage')
     try{
         const dashboardData = await Post.findAll({
+          include: [
+            {
+              model: User,
+              attributes:['name'],
+            },
+          ],
            
         });
-        res.status(200).json(dashboardData);
+        const posts = dashboardData.map((post) => post.get({plain:true}))
+
+        res.render('homepage', {
+          posts,
+          logged_in:req.session.logged_in
+        });
+        // res.status(200).json(dashboardData);
     }catch (err) {
         res.status(500).json(err);
     }
+
 });
 
-router.get('/dashboard', (req, res) => {
-    res.render('newPost')
+router.get('/dashboard', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Post}],
+    });
+    const user = userData.get({plain:true});
+    res.render('dashboard ', user)
+  }catch (err) {
+    res.status(500).json(err)
+  }
 });
+
+router.get('/new-post', (req, res) => {
+  res.render('newPost')
+})
 
 router.get('/signup', (req, res) => {
     res.render('signup')
@@ -24,24 +48,14 @@ router.get('/signup', (req, res) => {
 
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/newPost');
+        res.redirect('/dashboard');
         return;
     }
-    res.render('users')
+    res.render('login')
 });
 
 
 
-router.get('/post', async (req, res) => {
-    try {
-      const memberData = await Member.findByPk(req.session.member_id, {
-        attributes: { exclude: ['password'] },
-        include: [{ model: PastWorkouts}],
-      });
-      const member = memberData.get({plain: true});
-      res.render('pastworkouts', member)
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
+
 module.exports=router
+
