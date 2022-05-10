@@ -1,5 +1,6 @@
 const editUserPost = async (e) => {
     e.preventDefault();
+    console.log(hello)
 
     const title = document.querySelector("#postTitle").value;
     const post_content =document.querySelector('#postContent')
@@ -15,7 +16,7 @@ if(title || post_content) {
     });
     console.log(response)
     if (response.ok) {
-        document.location.replace ('/dashboard');
+        // document.location.replace ('/dashboard');
     }else {
         alert (response.statusText)
     }

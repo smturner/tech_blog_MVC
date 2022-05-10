@@ -3,32 +3,24 @@ const { Post, User, Comments } = require('../../models');
 const withAuth = require('../../utils/auth')
 
 
-router.get('/', (req, res) => {
-    res.render('newPost')
-  })
-  
-router.get("/", async(req,res)=> {
-   try{ 
-       const newPost = await Post.findAll({
-        include: [
-            {
+router.get('/', async (req, res) => {
+    try{
+        const newPost = await Post.findAll({
+            include: [{
                 model:User,
                 attributes:['name']
-            }
-        ]
+            }]
+        });
+        const posts = newPost.map((post) => post.get({plain:true}))
+        res.render('newPost', {
+            posts,
+            logged_in:req.session.logged_in
     });
-    console.log(newPost)
-    const posts = newPost.map((post) => post.get({plain:true}))
-console.log(posts)
-    res.render('dashboard', {
-      posts,
-      logged_in:req.session.logged_in
-    });
-    res.status(200).json(newPost);
-}catch (err) {
-    res.status(500).json(err);
+}catch(err){
+    res.status(500).json(err)
 }
-})
+  })
+  
 
 router.get('/:id', async (req,res) => {
     try{
