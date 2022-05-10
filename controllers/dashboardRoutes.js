@@ -28,15 +28,17 @@ router.get('/', withAuth, async (req, res) => {
 
 });
 
-router.get('/edit/:id', withAuth, async (req, res) => {
+router.get('/edit/:id', async (req, res) => {
     try{
         const editPost = await Post.findByPk (
             req.params.id
         )
-        const posts = editPost.map((post) => post.get({ plain: true }));
-
+        
+        // const posts = editPost.map((post) => post.get({ plain: true }));
+        console.log(editPost.get({plain: true}));
+        // res.json('ok'); 
         res.render("editPost", {
-            posts,
+            editPost,
             user_id: req.session.user_id,
             logged_in:true,
         })
@@ -44,7 +46,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
             res.status (404).json({message: "No post found with this id!"});
             return
         }
-        res.status(200).json(editPost)
+        //res.status(200).json(editPost)
     }catch (err) {
         res.status(400).json(err)
     }
