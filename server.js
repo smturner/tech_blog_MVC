@@ -19,10 +19,9 @@ const sess = {
   cookie: {},
   resave: false,
   saveUninitialized: true,
-  // don't need for project
-  // store: new SequelizeStore({
-  //   db: sequelize
-  // })
+  store: new SequelizeStore({
+    db: sequelize
+  })
 };
 app.use(session(sess));
 
