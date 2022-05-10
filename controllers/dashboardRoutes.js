@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comments } = require('../models');
 const withAuth = require('../utils/auth')
 
-
+//renders users personal routes for dashboard
 router.get('/', withAuth, async (req, res) => {
     try {
         const newPost = await Post.findAll({
@@ -11,10 +11,10 @@ router.get('/', withAuth, async (req, res) => {
             },
             include: [
                 {
-                  model: User,
-                  attributes:['name'],
+                    model: User,
+                    attributes: ['name'],
                 },
-              ],
+            ],
         });
         const posts = newPost.map((post) => post.get({ plain: true }));
         res.render('dashboard', {
@@ -25,58 +25,50 @@ router.get('/', withAuth, async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
-
 });
 
+//renders create new post page with form
 router.get('/create', async (req, res) => {
-    try{
+    try {
         const newPost = await Post.findAll({
             include: [{
-                model:User,
-                attributes:['name']
+                model: User,
+                attributes: ['name']
             }]
         });
-        const posts = newPost.map((post) => post.get({plain:true}))
+        const posts = newPost.map((post) => post.get({ plain: true }))
         res.render('newPost', {
             posts,
-            logged_in:req.session.logged_in
-    });
-}catch(err){
-    res.status(500).json(err)
-}
-  })
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 
-router.get('/edit/:id', async (req, res) => {
-    try{
-        const editPost = await Post.findByPk (
+//route to show the single post to edit
+router.get('/edit/:id', withAuth, async (req, res) => {
+    try {
+        const editPost = await Post.findByPk(
             req.params.id
         )
-        if(!editPost) {
-            res.status(404).json({message: "No post found with this id!"})
-        return
-        }
-        
-        // const posts = editPost.map((post) => post.get({ plain: true }));
-        const posts= editPost.get({plain: true});
-        // res.json('ok'); 
-        res.render("editPost", {
-            posts,
-            user_id: req.session.user_id,
-            logged_in:true,
-        })
-        // console.log(editPost.get({plain: true}));
-        // // res.json('ok'); 
-        // res.render("editPost", {
-        //     editPost,
-        //     user_id: req.session.user_id,
-        //     logged_in:true,
-        // })
         if (!editPost) {
-            res.status (404).json({message: "No post found with this id!"});
+            res.status(404).json({ message: "No post found with this id!" })
             return
         }
-        //res.status(200).json(editPost)
-    }catch (err) {
+
+        const posts = editPost.get({ plain: true });
+        console.log(posts)
+        res.render("editPost", {
+            posts,
+            // user_id: req.session.user_id,
+            logged_in: true,
+        })
+        if (!editPost) {
+            res.status(404).json({ message: "No post found with this id!" });
+            return
+        }
+    } catch (err) {
         res.status(400).json(err)
     }
 })

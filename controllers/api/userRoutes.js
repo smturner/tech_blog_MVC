@@ -50,6 +50,7 @@ router.post('/', async (req, res) => {
       }
   });
 
+  //logout route
   router.delete('/logout', withAuth, (req,res) => {
     if (req.session.logged_in) {
         req.session.destroy(() => {
