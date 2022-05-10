@@ -28,6 +28,24 @@ router.get('/', withAuth, async (req, res) => {
 
 });
 
+router.get('/create', async (req, res) => {
+    try{
+        const newPost = await Post.findAll({
+            include: [{
+                model:User,
+                attributes:['name']
+            }]
+        });
+        const posts = newPost.map((post) => post.get({plain:true}))
+        res.render('newPost', {
+            posts,
+            logged_in:req.session.logged_in
+    });
+}catch(err){
+    res.status(500).json(err)
+}
+  })
+
 router.get('/edit/:id', async (req, res) => {
     try{
         const editPost = await Post.findByPk (

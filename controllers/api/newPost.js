@@ -3,25 +3,6 @@ const { Post, User, Comments } = require('../../models');
 const withAuth = require('../../utils/auth')
 
 
-router.get('/', async (req, res) => {
-    try{
-        const newPost = await Post.findAll({
-            include: [{
-                model:User,
-                attributes:['name']
-            }]
-        });
-        const posts = newPost.map((post) => post.get({plain:true}))
-        res.render('newPost', {
-            posts,
-            logged_in:req.session.logged_in
-    });
-}catch(err){
-    res.status(500).json(err)
-}
-  })
-  
-
 router.get('/:id', async (req,res) => {
     try{
         const newPost = await Post.findOne(
@@ -54,7 +35,7 @@ router.post('/', withAuth, async (req, res) => {
 router.put("/:id", withAuth,  async (req, res) => {
     try {
         const dashboardData = await Post.update(
-            req.body, {
+            ...req.body, {
             where: {
                 id: req.params.id,
             },
