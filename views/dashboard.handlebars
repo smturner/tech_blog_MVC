@@ -1,13 +1,14 @@
 <div class="mb-5 pt-3 newPost1">
-    <button type="submit" class="newPostBtn btn btn-light btn-lg text-center"> <a class="link" id="" href="/api/newpost">+ New Blog Post</a></button>
+    <button type="submit" class="newPostBtn btn btn-light btn-lg text-center"> <a class="link" id="" href="/dashboard/create">+ New Blog Post</a></button>
     <h2>User Posts:</h2>
 
 {{#if posts.length}}
-</div
+</div>
+{{!-- {{#if posts.length}} --}}
 {{#each posts as |post|}}
+{{!-- {{#if }} --}}
 {{> dashboard-postinfo}}
-<a href= "/dashboard/edit/{{post.id}}"> 
-<button  class="btn btn-custom mb-5 ml-5 editBtn">Edit Post</button></a>
+<a href= "/dashboard/edit/ {{post.id}}"> <button  class="btn btn-custom mb-5 ml-5 editBtn">Edit Post</button></a>
 {{/each}}
 
 {{else}}
@@ -18,21 +19,4 @@
 
 
 
- {{!-- <div class="mb-5 pt-3">
-        <a href="/dashboard/create/"><button id="create-post" class="newPostBtn btn btn-light btn-lg text-center">Create Post</button></a>
-        
-        <h2 class="title pb-4">User Posts</h2><hr>
-{{#if posts.length}}
-    </div>
-
-    {{#each posts as |post|}}
-        {{> dashboard-postinfo}}
-        
-            <a href="/dashboard/edit/{{post.id}}"><button class="btn btn-custom mb-5 ml-5 editBtn">Edit post</button></a>
-        </div>
-    {{/each}}
-
-{{else}}
-<h6 class="pb-4 has-text-centered is-italic">No Available Posts</h6>
-
-{{/if}} --}}
+<script src="js/addPost.js"></script>

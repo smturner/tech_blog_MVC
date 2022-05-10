@@ -51,15 +51,26 @@ router.get('/edit/:id', async (req, res) => {
         const editPost = await Post.findByPk (
             req.params.id
         )
+        if(!editPost) {
+            res.status(404).json({message: "No post found with this id!"})
+        return
+        }
         
         // const posts = editPost.map((post) => post.get({ plain: true }));
-        console.log(editPost.get({plain: true}));
+        const posts= editPost.get({plain: true});
         // res.json('ok'); 
         res.render("editPost", {
-            editPost,
+            posts,
             user_id: req.session.user_id,
             logged_in:true,
         })
+        // console.log(editPost.get({plain: true}));
+        // // res.json('ok'); 
+        // res.render("editPost", {
+        //     editPost,
+        //     user_id: req.session.user_id,
+        //     logged_in:true,
+        // })
         if (!editPost) {
             res.status (404).json({message: "No post found with this id!"});
             return

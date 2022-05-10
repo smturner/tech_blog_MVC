@@ -36,8 +36,8 @@ const editUserPost = async function(e) {
 
     
     const title = document.getElementById('postTitle');
-    const post_content = document.getElementById('postContent');
-    const id = document.getElementById('post-id')
+    const post_content = document.getElementById('contentForm');
+    // const id = document.getElementById('post-id')
 
     fetch("/api/newpost/" + id.value, {
         method: "put", 
