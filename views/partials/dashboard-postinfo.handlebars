@@ -1,14 +1,17 @@
 <div class="row-md mb-6 post">
-  <header class="card-header" data-postId={{id}}>    
-    <div class= "column">
-          <p class="title is-pulled-left">{{title}}</p>
+  <header class="card-header" data-postId={{id}}>
+    <div class="column">
+      <p class="title is-pulled-left">{{title}}</p>
     </div>
   </header>
-<div class="card-content">
+  <div class="card-content">
     <p class="content has-text-justified list-group-item" id="content">{{post_content}}</p>
-   
-    <p class="list-group-item date">Created by {{user.name}} on {{format_date date_created}}</p>
-</div>
+    <div class="is-pulled-right">
+      <p class="list-group-item date"> <a href="/newpost/{{post.id}}">{{posts.comments.length}} Comment(s)</a> ||
+        Created by {{user.name}} on {{format_date date_created}} </p>
+    </div>
   </div>
+</div>
 
-      {{!-- <script src="/js/editPost"> </script> --}}
+{{!--
+<script src="/js/editPost"> </script> --}}

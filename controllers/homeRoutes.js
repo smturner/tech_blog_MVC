@@ -2,7 +2,9 @@ const router = require('express').Router();
 const { route } = require('.');
 const { User, Post } = require('../models');
 
-router.get('')
+router.get('/comments', (req,res)=> {
+  res.render('homepage')
+}) 
 // route that renders the homepage blogposts
 router.get('/', async (req, res) => {
     try{
