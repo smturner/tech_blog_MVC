@@ -1,5 +1,5 @@
-{{> dashbaord-postinfo}}
-{{#if logged_in}}
+{{> dashboard-postinfo}}
+{{!-- {{#if logged_in}} --}}
 <form class"commentForm">
     <div>
         <textarea class="ml-5" id="commentBody" name="commentBody"></textarea>
@@ -11,10 +11,10 @@
     </div>
 
 </form>
-{{/if}}
+{{!-- {{/if}} --}}
 
 {{> comments}}
 
-{{#if logged_in}}
+{{!-- {{#if logged_in}} --}}
 <scrip src= "js/comments.js"></scrip>
-{{/if}}
+{{!-- {{/if}} --}}
