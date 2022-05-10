@@ -1,0 +1,20 @@
+{{> dashbaord-postinfo}}
+{{#if logged_in}}
+<form class"commentForm">
+    <div>
+        <textarea class="ml-5" id="commentBody" name="commentBody"></textarea>
+
+    </div>
+
+    <div>
+        <button class="button is warning ml-5 mb-5" type="submit">Comment</button>
+    </div>
+
+</form>
+{{/if}}
+
+{{> comments}}
+
+{{#if logged_in}}
+<scrip src= "js/comments.js"></scrip>
+{{/if}}

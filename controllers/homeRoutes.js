@@ -1,7 +1,8 @@
 const router = require('express').Router();
+const { route } = require('.');
 const { User, Post } = require('../models');
 
-
+router.get('')
 // route that renders the homepage blogposts
 router.get('/', async (req, res) => {
     try{

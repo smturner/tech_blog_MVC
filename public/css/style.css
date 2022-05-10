@@ -55,6 +55,11 @@ main {
       margin-top: 15px;
   }
 
+  .newPost,
+  .editPost
+   {
+      padding: 10px;
+  }
   .newPostBtn {
 align-items: right;
     color:white;

@@ -4,13 +4,13 @@ const editUserPost = async (e) => {
 
     
     const title = document.querySelector('#postTitle').value;
-    const post_content = document.getElementById('contentForm');
+    const post_content = document.getElementById('contentForm').value;
     // const id = document.getElementById('post-id')
     const id = window.location.toString().split("/")[
         window.location.toString().split("/").length - 1
       ];
       console.log(id)
-    const response = await fetch(`api/newpost/${id}`, {
+    const response = await fetch(`/api/newpost/${id}`, {
         method: "PUT", 
         body: JSON.stringify({
            title,
