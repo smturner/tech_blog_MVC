@@ -5,7 +5,7 @@ const newPost = require("./newPost");
 
 
 router.use('/user', userRoutes);
-router.use('/comment', commentsRoutes)
+router.use('/comments', commentsRoutes)
 router.use('/newpost', newPost);
 
 module.exports = router;

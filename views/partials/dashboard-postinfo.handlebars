@@ -7,9 +7,14 @@
   <div class="card-content">
     <p class="content has-text-justified list-group-item" id="content">{{post_content}}</p>
     <div class="is-pulled-right">
-      <p class="list-group-item date"> <a 
-      {{!-- href="/post/{{id}}" --}}
-      >{{posts.comments.length}} Comment(s)</a> ||
+      {{!-- <a 
+      href="/post/{{id}}"
+      >{{posts.comments.length}} Comment(s)</a>
+      <p class="list-group-item date">  ||
+        Created by {{user.name}} on {{ format_date date_created}} </p> --}}
+             <p class="list-group-item date"> <a >
+                            {{!-- href="/post/{{id}}"> --}}
+             {{posts.comments.length}} Comment(s)</a> ||
         Created by {{user.name}} on {{format_date date_created}} </p>
     </div>
   </div>
@@ -17,3 +22,4 @@
 
 {{!--
 <script src="/js/editPost"> </script> --}}
+

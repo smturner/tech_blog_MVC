@@ -1,5 +1,10 @@
+{{#if posts.length}}
 
 {{#each posts as |post| }}
 {{> dashboard-postinfo}}
 {{/each}}
 
+{{else}}
+<h5>No Available Posts</h5>
+
+{{/if}}

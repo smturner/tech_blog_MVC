@@ -54,6 +54,36 @@ router.get('/login', (req, res) => {
 });
 
 // potential route for comments
+// router.get ('/post/:id', async (req,res) => {
+//   try {
+//     const commentData = await Post.findByPk(
+//       req.params.id,
+//     )
+  
+
+//     const posts = commentData.get({ plain: true});
+//     console.log(posts)
+//   //   console.log(posts)
+//     res.render("single-post", {posts,
+//                   user_id: req.session.user_id,
+
+//     logged_in: true,
+//   })
+//   if (!commentData) {
+//     res.status(404).json({message: "No post found with this id!"});
+//     return
+
+//   }
+//     // res.json("ok")
+//     // console.log(postData)
+
+   
+//   }catch(err) {
+//     res.status(400).json(err)
+//   }
+// });
+
+// potential route for comments
 router.get ('/post/:id', async (req,res) => {
   try {
     const postData = await Post.findByPk(
@@ -98,5 +128,5 @@ router.get ('/post/:id', async (req,res) => {
   }
 });
 
-module.exports=router
+module.exports = router
 
