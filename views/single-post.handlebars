@@ -1,20 +1,20 @@
-{{> dashboard-postinfo}}
-{{#if logged_in}}
+{{> dashboard-postinfo post}}
+{{!-- {{#if logged_in}} --}}
 <form class"commentForm">
     <div>
-        <textarea class="ml-5" id="commentBody" name="commentBody"></textarea>
+        <textarea class="col-12 ml-5" id="commentBody" name="commentBody"></textarea>
 
     </div>
 
     <div>
-        <button class="commentBtn button is-warning ml-5 mb-5" type="submit">Comment</button>
+        <button class=" btn btn-dark commentBtn ml-5 mb-5" style=" margin-top: 2px; width:150px;" type="submit">Comment</button>
     </div>
 
 </form>
-{{/if}}
+{{!-- {{/if}} --}}
 
-{{> comments}}
+{{> comments }}
 
-{{#if logged_in}}
+{{!-- {{#if logged_in}} --}}
 <scrip src= "js/comments.js"></scrip>
-{{/if}}
+{{!-- {{/if}} --}}

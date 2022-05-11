@@ -2,7 +2,7 @@ const commentForm = async(e) => {
     console.log("hello")
     e.preventDefault()
 
-    const comment_content= document.querySelector('#commentBody').value
+    const comment_content= document.querySelector('#commentBody').value.trim()
     const post_id=  window.location.toString().split("/")[
         window.location.toString().split("/").length - 1
       ];

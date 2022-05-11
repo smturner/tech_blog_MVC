@@ -20,7 +20,7 @@ const postData = [
   {
     title: "New to the tech world?",
     post_content:
-      "I joined 6 years ago and would love to offer some advice about how to get in, what jobs to look for, and what programs are the best to get you going in the right direction",
+      "I joined 6 years ago and would love to offer some advice about how to get in, what jobs to look for, and what programs are the best to get you going in the right direction.",
     user_id: 4,
   },
 ];
