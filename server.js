@@ -10,18 +10,21 @@ const helpers = require('./utils/helpers');
 
 
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({ helpers });
 
 const sess = {
   secret: 'Super secret secret',
-  cookie: {maxAge: 40000},
-  resave: false,
+  cookie: {
+    expires: 10 * 60 * 1000,
+  },
+  resave: true,
+  rolling: true,
   saveUninitialized: true,
-  // store: new SequelizeStore({
-  //   db: sequelize
-  // })
+  store: new SequelizeStore({
+    db: sequelize
+  })
 };
 app.use(session(sess));
 
