@@ -22,11 +22,13 @@ You will need to run npm i to install the requried third party packages and requ
   <li> Click on login at the top of the screen. If this is your first time at the website you can click 'signup instead' and it will bring you to the signup page. Fill out your information and hit submit. You will be directed to your personal dashbaord (This is the same if you use the login feature instead of the signup feature). </li>
   <li> Once on the dashboard you can create a post, visit the homepage, or logout.</li>
   <li>If you are creating a new post, click the + New Post button and you will be directed to a new post form. Fill it out and click submit. You will be directed back to the dashboard where you will see your post. Your post will also be pushed to the home page. If you would like to edit or delete your post click on the edit button and it will allow you to edit your post or delete it.</li>
-  <li>If you go to the homepage you will now be able to comment on other people's posts. Click on the comment button and a comment box will appear.</li>
-  <li>When you are done using the application you may click logout and you will be directed back to the homepage but you will notice you can only read the comments and not post them anymore.</li>
-  <ul>
+  - If you go to the homepage you will now be able to comment on other people's posts. Click on the comment button and a comment box will appear.
+  - When you are done using the application you may click logout and you will be directed back to the homepage but you will notice you can only read the comments and not post them anymore.
+
+
 
 ## Links to Application
+![Ima](./public/images/screenshot1.png)
 <a href="https://github.com/smturner/tech_blog_MVC">GitHub Repo</a>
 
 <a href="https://blooming-island-93288.herokuapp.com/">Deployed Webpage </a>
