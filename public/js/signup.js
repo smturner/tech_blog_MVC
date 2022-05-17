@@ -1,5 +1,4 @@
 const signUpForm = async (e) => {
-    console.log("hello")
     e.preventDefault();
 
 
@@ -7,7 +6,6 @@ const signUpForm = async (e) => {
     const email = document.querySelector('#emailSignup').value.trim();
     const password = document.querySelector('#passwordSignup').value.trim ();
 
-    console.log(name, email, password)
 
 
     if (name && email && password) {

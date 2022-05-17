@@ -52,16 +52,9 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         const editPost = await Post.findByPk(
             req.params.id
         )
-        // if (!editPost) {
-        //     res.status(404).json({ message: "No post found with this id!" })
-        //     return
-        // }
-
         const posts = editPost.get({ plain: true });
-        // console.log(posts)
         res.render("editPost", {
             posts,
-            // user_id: req.session.user_id,
             logged_in: true,
         })
         if (!editPost) {

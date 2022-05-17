@@ -1,11 +1,8 @@
 const loginForm = async (e) => {
-    console.log("hello")
     e.preventDefault();
 
     const email = document.querySelector('#emailLogin').value.trim();
     const password = document.querySelector('#passwordLogin').value.trim();
-    console.log(email)
-    console.log(password)
     
     if (email && password) {
         const response = await fetch('/api/user/login', {

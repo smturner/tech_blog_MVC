@@ -1,5 +1,4 @@
 const editUserPost = async (e) => {
-    console.log("hello")
     e.preventDefault();
 
     
@@ -9,7 +8,6 @@ const editUserPost = async (e) => {
     const id = window.location.toString().split("/")[
         window.location.toString().split("/").length - 1
       ];
-      console.log(id)
     const response = await fetch(`/api/newpost/${id}`, {
         method: "PUT", 
         body: JSON.stringify({
