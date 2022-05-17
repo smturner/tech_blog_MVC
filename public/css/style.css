@@ -92,7 +92,8 @@ align-items: right;
       margin-bottom:0px;
   }
   
-  #content{
+  #content,
+  .text{
       font-size:20px;
   }
 .card-header {
@@ -104,7 +105,14 @@ align-items: right;
 margin-bottom:0px;  
 margin-top: 0px;
 }
+.comment{
+    margin: 3px;
+}
 
+.meta {
+    font-size: 12px;
+    color: grey
+}
 .date{
     font-size: 12px;
     text-align: right;

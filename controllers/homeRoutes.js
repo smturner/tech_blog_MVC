@@ -51,44 +51,49 @@ router.get('/login', (req, res) => {
   res.render('login')
 });
 
-// route for comments
-router.get('/post/:id', async (req, res) => {
-  try {
-    const postData = await Post.findByPk(
-    {
-       id: req.params.id,
-    
-      attributes: ["id", "title", "date_created", "post_content"],
-      include: [
-        {
-          model: Comments,
-          attributes: ["id", "comment_content", "post_id", "user_id", "date_created"],
-          include: {
-            model: User,
-            attributes: ["name"]
-          }
-        },
-        {
+// Render the single post page
+router.get('/post/:id', (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      'id',
+      'post_content',
+      'title',
+      'date_created',
+    ],
+    include: [
+      {
         model: User,
-        attributes: ["name"]
-        },
-      ],
-    });
-    const posts = postData.get({ plaine: true });
-    res.render("single-post", {
-      posts,
-      logged_in: req.session.logged_in,
+        attributes: ['name']
+      },
+      {
+          model: Comments,
+          attributes: ['id', 'comment_content', 'post_id', 'user_id', 'date_created'],
+          include: {
+              model: User,
+              attributes: ['name']
+          }
+      }
+    ]
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      const posts = dbPostData.get({ plain: true });
+      res.render('single-post', {
+          posts,
+          logged_in: req.session.logged_in
+        });
     })
-    if (!postData) {
-      res.status(404).json({ message: "No post found with this id!" });
-      return
-    }
-  } catch (err) {
-    res.status(400).json(err)
-  }
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
-
-
 
 module.exports = router
 
